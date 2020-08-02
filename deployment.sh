@@ -33,13 +33,14 @@ function static_website_deploy_files() {
 function test_static_website_content() {
   echo "==> Test if the website displays the required string..."
   WebsiteURL=$(aws cloudformation describe-stacks --stack-name qctrl-static-website | jq -r '.Stacks[0].Outputs[] | select( .OutputKey | contains("WebsiteURL")).OutputValue')
+  echo "====> WebsiteURL: $WebsiteURL"
 
   website_content=$(curl -s $WebsiteURL)
   if [[ $website_content != "This is Suan Kan's website" ]]; then
-    echo "ERROR: website_content: $website_content. It is not equal to the required string."
+    echo "====> ERROR: website_content: $website_content. It is not equal to the required string."
     exit 1
   else
-    echo "SUCCESS: Deployed and tested a static website!"
+    echo "====> SUCCESS: Deployed and tested a static website!"
   fi
 }
 
