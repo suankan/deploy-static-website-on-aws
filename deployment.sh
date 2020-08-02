@@ -9,8 +9,7 @@ if [[ -z AWS_PROFILE ]]; then
 fi
 
 export AWS_PAGER=cat
-AwsAccount=$(aws sts get-caller-identity | jq -r '.Account')
-BucketName="${AwsAccount}-qctrl-static-website-bucket"
+BucketName="suankan-qctrl-static-website-bucket"
 
 function cloudformation_validate() {
   echo "==> Validating CloudFormation template..."
