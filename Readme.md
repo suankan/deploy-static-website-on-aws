@@ -56,19 +56,20 @@ File `deployment.sh` contains shell script which:
     "Description": "CloudFormation stack to deploy a static website on S3."
 }
 ==> Deploying S3 bucket for a static website...
-INFO: [18:16:31] qctrl-static-website - CREATE_IN_PROGRESS - User Initiated
-INFO: [18:16:34] S3Bucket - CREATE_IN_PROGRESS
-INFO: [18:16:36] S3Bucket - CREATE_IN_PROGRESS - Resource creation Initiated
-INFO: [18:16:57] S3Bucket - CREATE_COMPLETE
-INFO: [18:16:59] S3BucketPolicy - CREATE_IN_PROGRESS
-INFO: [18:17:00] S3BucketPolicy - CREATE_IN_PROGRESS - Resource creation Initiated
-INFO: [18:17:01] S3BucketPolicy - CREATE_COMPLETE
-INFO: [18:17:03] qctrl-static-website - CREATE_COMPLETE
+INFO: [18:39:32] qctrl-static-website - CREATE_IN_PROGRESS - User Initiated
+INFO: [18:39:35] S3Bucket - CREATE_IN_PROGRESS
+INFO: [18:39:37] S3Bucket - CREATE_IN_PROGRESS - Resource creation Initiated
+INFO: [18:39:59] S3Bucket - CREATE_COMPLETE
+INFO: [18:40:00] S3BucketPolicy - CREATE_IN_PROGRESS
+INFO: [18:40:02] S3BucketPolicy - CREATE_IN_PROGRESS - Resource creation Initiated
+INFO: [18:40:02] S3BucketPolicy - CREATE_COMPLETE
+INFO: [18:40:04] qctrl-static-website - CREATE_COMPLETE
 CREATE_COMPLETE
 ==> Deploying files into the website...
-upload: files/index.html to s3://039095953046-qctrl-static-website-bucket/index.html
+upload: files/index.html to s3://suankan-qctrl-static-website-bucket/index.html
 ==> Test if the website displays the required string...
-SUCCESS: Deployed and tested a static website!
+====> WebsiteURL: http://suankan-qctrl-static-website-bucket.s3-website-ap-southeast-2.amazonaws.com
+====> SUCCESS: Deployed and tested a static website!
 ```
 
 This repo and deployment script are ready to be a part of existing CI/CD pipeline. 
