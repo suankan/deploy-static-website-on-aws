@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation stack to deploy a static website on S3.
+
+Parameters:
+  BucketName:
+    Type: String
+Resources:
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Join
+              - "/"
+              - - !GetAtt S3Bucket.Arn
+                - "*"
+            Principal: "*"
+  S3Bucket:
+    # DeletionPolicy: Retain
+    # UpdateReplacePolicy: Retain
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      BucketName: !Sub "${BucketName}"
+      Tags:
+        - Key: Name
+          Value: !Sub "${BucketName}"
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt 
+      - S3Bucket
+      - WebsiteURL
+    Description: URL for website hosted on S3
